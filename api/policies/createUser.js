@@ -23,8 +23,8 @@ module.exports = function createUser(request, response, next) {
     var password = request.body.passports.password
     var confirmation = request.body.password_confirmation
 
-    console.log('[Policy.createUser()] -> password : ' + password);
-    console.log('[Policy.createUser()] -> confirmation : ' + confirmation);
+    //console.log('[Policy.createUser()] -> password : ' + password);
+    //console.log('[Policy.createUser()] -> confirmation : ' + confirmation);
 
     if (!password) {
         var error = new Error();
