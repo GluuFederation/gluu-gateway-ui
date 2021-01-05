@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 
 /**
  * KongNode.js
@@ -10,11 +9,10 @@ var _ = require('lodash');
  */
 var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
   tableName : "konga_email_transports",
-  autoPK : false,
+  primaryKey: 'id',
   attributes: {
     id : {
       type: 'integer',
-      primaryKey: true,
       unique: true,
       autoIncrement : true
     },

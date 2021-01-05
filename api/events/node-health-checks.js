@@ -3,7 +3,6 @@
  */
 
 var events = require('events');
-var _ = require('lodash')
 var eventEmitter = new events.EventEmitter();
 var cron = require('node-cron');
 var path = require('path')
@@ -22,8 +21,6 @@ var sendmail = require('sendmail')({
     },
     silent: false
 })
-
-var Utils = require("../helpers/utils");
 
 module.exports = {
     emit : function(event,data) {
@@ -87,7 +84,7 @@ module.exports = {
                     tasks[node.id].timesFailed++;
                     sails.log(new Date(), 'health_checks:cron:checkStatus => Health check for node ' + node.id + ' failed ' + tasks[node.id].timesFailed + ' times');
 
-                    var timeDiff = Utils.getMinutesDiff(new Date(),tasks[node.id].lastNotified)
+                    var timeDiff = sails.helpers.getMinutesDiff(new Date(),tasks[node.id].lastNotified)
                     sails.log(new Date(), 'health_checks:cron:checkStatus:last notified => ' + tasks[node.id].lastNotified);
                     sails.log(new Date(), 'health_checks:cron:checkStatus => Checking if eligible for notification',timeDiff);
                     if(!tasks[node.id].lastNotified || timeDiff > notificationsInterval) {
@@ -172,7 +169,7 @@ module.exports = {
                     || !settings[0].data.notify_when.node_down.active) return false;
 
 
-                Utils.sendSlackNotification(settings[0],self.makePlainTextNotification(node));
+                    sails.helpers.sendSlackNotification(settings[0],self.makePlainTextNotification(node));
 
                 self.createTransporter(settings[0],function(err,result){
                     if(err || !result) {
@@ -182,7 +179,7 @@ module.exports = {
                         var html = self.makeHTMLNotification(node)
                         var settings = result.settings
 
-                        Utils.getAdminEmailList(function(err,receivers){
+                        sails.helpers.getAdminEmailList(function(err,receivers){
                             sails.log(new Date(), "health_checks:notify:receivers => ",  receivers)
                             if(!err && receivers.length) {
 

@@ -28,7 +28,6 @@
 var passport = require('passport');
 var path = require('path');
 var url = require('url');
-var _ = require('lodash');
 
 // Load authentication protocols
 passport.protocols = require('./protocols');

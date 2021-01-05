@@ -7,7 +7,6 @@
 
 var KongService = require('../services/KongService');
 var SnapshotsService = require('../services/SnapshotsService');
-var _ = require('lodash');
 var async = require('async');
 var fs = require('fs');
 var semver = require('semver');

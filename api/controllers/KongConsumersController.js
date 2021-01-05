@@ -1,4 +1,3 @@
-var _ = require('lodash');
 var Kong = require("../services/KongService");
 var async = require("async");
 

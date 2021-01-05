@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 var HealthCheckEvents = require("../events/node-health-checks")
 
 /**
@@ -11,11 +10,10 @@ var HealthCheckEvents = require("../events/node-health-checks")
  */
 var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
   tableName : "konga_kong_nodes",
-  autoPK : false,
+  primaryKey: 'id',
   attributes: {
     id : {
       type: 'integer',
-      primaryKey: true,
       unique: true,
       autoIncrement : true
     },
@@ -33,7 +31,6 @@ var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
     },
     kong_version: {
       type: 'string',
-      required : true,
       defaultsTo : '2.2.1'
     },
     health_checks : {
@@ -45,7 +42,6 @@ var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
     },
     active: {
       type: 'boolean',
-      required : true,
       defaultsTo : false
     }
   },

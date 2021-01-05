@@ -34,12 +34,12 @@ module.exports = {
   kong_admin_url: process.env.KONG_ADMIN_URL || 'http://localhost:8001',// 'http://gluu.local.org:8001',
 
 
-  connections: {
+  /*connections: {
     postgres: {
       adapter: 'sails-postgresql',
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASSWORD || 'admin',
+      password: process.env.DB_PASSWORD || 'onezee',
       port: process.env.DB_PORT && parseInt(process.env.DB_PORT) || 5432,
       database: process.env.DB_DATABASE || 'konga',
       poolSize: process.env.DB_POOLSIZE && parseInt(process.env.DB_POOLSIZE) || 10,
@@ -49,7 +49,7 @@ module.exports = {
 
   models: {
     connection: process.env.DB_ADAPTER || 'postgres',
-  },
+  },*/
 
   session: {
     secret: process.env.SESSION_SECRET || '' // Add your own SECRET string here

@@ -5,8 +5,7 @@
 'use strict'
 
 var pg = require("../../node_modules/sails-postgresql/node_modules/pg");
-var dbConf = require("../../config/connections");
-var _ = require("lodash");
+//var _ = require("lodash");
 
 module.exports = {
     run : function (next) {
@@ -14,12 +13,12 @@ module.exports = {
         console.log("Using postgres DB Adapter.");
 
         var self     = this;
-        var user     = dbConf.connections.postgres.user;
-        var password = dbConf.connections.postgres.password;
-        var dbName   = dbConf.connections.postgres.database;
-        var dbHost   = dbConf.connections.postgres.host;
-        var dbPort   = dbConf.connections.postgres.port;
-        var ssl      = dbConf.connections.postgres.ssl;
+        var user     = sails.config.datastores.default.user//dbConf.connections.postgres.user;
+        var password = sails.config.datastores.default.password;
+        var dbName   = sails.config.datastores.default.database;
+        var dbHost   = sails.config.datastores.default.host;
+        var dbPort   = sails.config.datastores.default.port;
+        var ssl      = sails.config.datastores.default.ssl;
 
         var opts = {
             user: user,

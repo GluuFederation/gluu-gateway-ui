@@ -1,15 +1,13 @@
 'use strict';
 
-var _ = require('lodash');
 var Scheduler = require("../services/SnapshotsScheduler");
 
 var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
   tableName: "konga_kong_snapshot_schedules",
-  autoPK: false,
+  primaryKey: 'id',
   attributes: {
     id: {
       type: 'integer',
-      primaryKey: true,
       unique: true,
       autoIncrement: true
     },
@@ -31,7 +29,8 @@ var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
     },
 
     lastRunAt: {
-      type: 'date',
+      type: 'ref',
+      columnType: 'timestamp',
       defaultsTo: null
     }
   },

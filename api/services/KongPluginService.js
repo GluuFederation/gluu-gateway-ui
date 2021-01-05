@@ -4,7 +4,6 @@ var unirest = require("unirest")
 var async = require('async')
 var fs = require('fs')
 var path = require('path')
-var _ = require('lodash')
 var KongService = require('./KongService')
 
 

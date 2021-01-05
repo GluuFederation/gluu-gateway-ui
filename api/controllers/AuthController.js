@@ -1,7 +1,6 @@
 'use strict';
 
 var async = require('async');
-var _ = require('lodash');
 var uuid = require('node-uuid');
 var httpRequest = require('request-promise');
 var UserSignUp = require("../events/user-events")

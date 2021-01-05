@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 var async = require('async');
 var uuid = require('node-uuid');
 
@@ -14,11 +13,10 @@ var uuid = require('node-uuid');
 
 var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
     tableName: "konga_users",
-    autoPK: false,
+    primaryKey: 'id',
     attributes: {
         id: {
             type: 'integer',
-            primaryKey: true,
             unique: true,
             autoIncrement: true
         },
@@ -28,7 +26,8 @@ var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
             required: true
         },
         email: {
-            type: 'email',
+            type: 'string',
+            isEmail: true,
             unique: true,
             required: true
         },

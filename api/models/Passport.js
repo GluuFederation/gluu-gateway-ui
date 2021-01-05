@@ -1,7 +1,6 @@
 'use strict';
 
 var bcrypt = require('bcryptjs');
-var _ = require('lodash');
 
 /**
  * Passport Model
@@ -20,14 +19,13 @@ var _ = require('lodash');
 var defaultModel = {
   schema: true,
   tableName : "konga_passports",
-  autoPK : false,
+  primaryKey: 'id',
 
   attributes: {
 
 
     id : {
       type: 'integer',
-      primaryKey: true,
       unique: true,
       autoIncrement : true
     },
@@ -41,8 +39,8 @@ var defaultModel = {
      * party service (e.g. 'oauth', 'oauth2', 'openid').
      */
     protocol: {
-      type: 'alphanumeric',
-      required: true
+      type: 'string',
+      regex: /^[0-9A-Z]+$/i
     },
 
     /**
@@ -70,7 +68,7 @@ var defaultModel = {
      * and a `refreshToken` will be issued.
      */
     provider: {
-      type: 'alphanumericdashed'
+      type: 'string'
     },
 
     identifier: {
@@ -93,6 +91,7 @@ var defaultModel = {
     user: {
       model: 'User'
     },
+  },
 
     /**
      * Validate password used by the local strategy.
@@ -102,8 +101,7 @@ var defaultModel = {
      */
     validatePassword: function validatePassword(password, next) {
       bcrypt.compare(password, this.password, next);
-    }
-  },
+    },
 
     //model validation messages definitions
     validationMessages: { //hand for i18n & l10n

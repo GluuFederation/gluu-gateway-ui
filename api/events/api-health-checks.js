@@ -3,7 +3,6 @@
  */
 
 var events = require('events');
-var _ = require('lodash')
 var eventEmitter = new events.EventEmitter();
 var unirest = require('unirest')
 var cron = require('node-cron');
@@ -23,7 +22,7 @@ var sendmail = require('sendmail')({
     },
     silent: false
 })
-var Utils = require("../helpers/utils");
+
 
 
 module.exports = {
@@ -105,7 +104,7 @@ module.exports = {
                                 tasks[hc.id].timesFailed++;
                                 sails.log(new Date(), 'health_checks:cron:checkStatus => Health check for hc ' + hc.id + ' failed ' + tasks[hc.id].timesFailed + ' times');
 
-                                var timeDiff = Utils.getMinutesDiff(new Date(),tasks[hc.id].lastNotified)
+                                var timeDiff = sails.helpers.getMinutesDiff(new Date(),tasks[hc.id].lastNotified)
                                 sails.log(new Date(), 'health_checks:cron:checkStatus:last notified => ' + tasks[hc.id].lastNotified);
                                 sails.log(new Date(), 'health_checks:cron:checkStatus => Checking if eligible for notification',timeDiff);
                                 if(!tasks[hc.id].lastNotified || timeDiff > notificationsInterval) {
@@ -195,7 +194,7 @@ module.exports = {
                     || !settings[0].data.notify_when.api_down.active) return false;
 
 
-                Utils.sendSlackNotification(settings[0],self.makePlainTextNotification(hc));
+                    sails.helpers.sendSlackNotification(settings[0],self.makePlainTextNotification(hc));
 
                 self.notifyNotificationEndpoint(hc)
 
@@ -207,7 +206,7 @@ module.exports = {
                         var settings = result.settings
                         var html = self.makeHTMLNotification(hc)
 
-                        Utils.getAdminEmailList(function(err,receivers){
+                        sails.helpers.getAdminEmailList(function(err,receivers){
                             sails.log(new Date(), "health_checks:notify:receivers => ",  receivers)
                             if(!err && receivers.length) {
 

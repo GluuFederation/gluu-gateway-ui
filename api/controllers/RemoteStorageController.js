@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict'
-
 var unirest = require('unirest');
 var RemoteStorageService = require('../services/remote/RemoteStorageService')
 var adapters = require('../services/remote/adapters')

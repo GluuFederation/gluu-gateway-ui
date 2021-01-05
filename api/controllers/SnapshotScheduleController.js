@@ -1,6 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
 var cron = require('node-cron');
 
 module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {

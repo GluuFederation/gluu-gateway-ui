@@ -5,7 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var _ = require("lodash");
 var KongService = require('../services/KongService');
 
 module.exports = _.merge(_.cloneDeep(require('../base/Controller')), {

@@ -1,11 +1,9 @@
 'use strict';
 
 var cron = require('node-cron');
-var _ = require('lodash');
 var semver = require('semver');
 var KongService = require('./KongService');
 var async = require('async');
-var Utils = require('../helpers/utils');
 
 module.exports = {
 
@@ -22,7 +20,7 @@ module.exports = {
 
       var endpoints = ['/services', '/routes', '/plugins', '/consumers', '/upstreams'];
 
-      status.version = Utils.ensureSemverFormat(status.version);
+      status.version = sails.helpers.ensureSemverFormat(status.version);
 
       var fns = [];
 
@@ -178,7 +176,7 @@ module.exports = {
               sails.models.snapshot.create({
                 name: name || "snap@" + Date.now(),
                 kong_node_name: node.name,
-                kong_node_url: Utils.withoutTrailingSlash(node.kong_admin_url),
+                kong_node_url: sails.helpers.withoutTrailingSlash(node.kong_admin_url),
                 kong_version: status.version,
                 data: result
               }).exec(function (err, created) {

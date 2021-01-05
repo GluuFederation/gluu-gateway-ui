@@ -1,6 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
+//var _ = require('lodash');
 var HealthCheckEvents = require("../events/api-health-checks")
 
 /**
@@ -11,11 +11,10 @@ var HealthCheckEvents = require("../events/api-health-checks")
  */
 var defaultModel = _.merge(_.cloneDeep(require('../base/Model')), {
   tableName : "konga_api_health_checks",
-  autoPK : false,
+  primaryKey: 'id',
   attributes: {
     id : {
       type: 'integer',
-      primaryKey: true,
       unique: true,
       autoIncrement : true
     },
