@@ -1,8 +1,8 @@
 {
-  "name": "project",
+  "name": "gluu-gateway-ui",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "4.2.2",
+  "description": "Kong admin GUI",
   "keywords": [],
   "dependencies": {
     "@sailshq/connect-redis": "^3.2.1",

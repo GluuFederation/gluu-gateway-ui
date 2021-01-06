@@ -48,16 +48,8 @@ module.exports.datastores = {
     *    (See https://sailsjs.com/config/datastores for help.)                 *
     *                                                                          *
     ***************************************************************************/
-    // adapter: 'sails-mysql',
-    // url: 'mysql://user:password@host:port/database',
     adapter: require('sails-postgresql'),
-    url: 'postgresql://postgres:onezee@localhost:5432/konga',
-    /*host: process.env.DB_HOST || 'localhost',
-    user:  process.env.DB_USER || 'postgres',
-    password: process.env.DB_PASSWORD || 'onezee',
-    port: process.env.DB_PORT || 5432,
-    database: process.env.DB_DATABASE ||'konga',*/
-    //poolSize: process.env.DB_POOLSIZE || 10,
+    url: 'postgresql://postgres:db_password@localhost:5432/konga',
     ssl: process.env.DB_SSL || false
 
   },
