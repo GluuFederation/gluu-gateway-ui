@@ -1,0 +1,59 @@
+<div class="modal-content">
+  <form novalidate>
+    <div class="modal-body">
+      <h3>Header configurations</h3>
+      <table class="table table-bordered table-striped">
+        <tr>
+          <th style="width: 20%;">Key</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td><code>Header Name/Title</code></td>
+          <td>The title for header, may contain <code>{*}</code> placeholder when iterate thru claims, take a look at
+            <code>iterate </code> field below. Example: <code>http-kong-id-token</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Header Value</code></td>
+          <td>It is the lua expression which will populate the environment values. <code>Note: For custom values you need to pass value in double quotes("value")</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Header Format</code></td>
+          <td>the format used to encode the value. Formats: <code>string(as it is)</code>, <code>base64</code>, <code>urlencoded</code>,
+            <code>list</code>, and <code>jwt(with none alg)</code></td>
+        </tr>
+        <tr>
+          <td><code>Separator</code></td>
+          <td>it is use when your header format is <code>list</code> type. It join the list of values by separator. Example: <code>, (comma)</code></td>
+        </tr>
+        <tr>
+          <td><code>Iterate</code></td>
+          <td>the <code>header value</code> should point to an environment values, for example <code>id_token</code>
+            It use to iterate thru keys/values and create separate header for every key. The captured key is accessible in <code>header name</code> via special placeholder i.e. <code>{*}</code>.</td>
+        </tr>
+      </table>
+
+      <h4>Examples: </h4>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>Header Name/Title</th>
+          <th>Value</th>
+          <th>Format</th>
+          <th>Separator</th>
+          <th>Iterate</th>
+        </tr>
+        <tr data-ng-repeat="path in examples">
+          <td>{{path.headerName}}</td>
+          <td>{{path.value}}</td>
+          <td>{{path.format}}</td>
+          <td>{{path.separator}}</td>
+          <td>{{path.Iterate}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" ng-click="$dismiss()">Close</button>
+    </div>
+  </form>
+</div>
